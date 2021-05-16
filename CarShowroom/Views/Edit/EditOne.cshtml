@@ -1,0 +1,22 @@
+﻿@model CarShowroom.Models.Car
+
+@{
+    ViewData["Title"] = "Редагування автомобілю";
+    Layout = "_Layout";
+}
+
+<form enctype="application/x-www-form-urlencoded" method="post" action="/edit">
+    @if (!string.IsNullOrEmpty(Model.Id))
+    {
+        <input type="hidden" name="Id" value="@Model.Id" />
+    }
+    <input type="text" name="Manufacturer" value="@Model.Manufacturer"/>
+    <input type="text" name="Model" value="@Model.Model"/>
+    <input type="text" name="EngineType" value="@Model.EngineType"/>
+    <input type="text" name="EnginePower" value="@Model.EnginePower"/>
+    <input type="number" name="AmountOfCylinders" value="@Model.AmountOfCylinders"/>
+    <input type="text" name="Color" value="@Model.Color"/>
+    <input type="date" name="DateOfCreation" value="@Model.DateOfCreation"/>
+    <input type="text" name="AmountLeft" value="@Model.AmountLeft">
+    <input type="text" name="ImageUrl" value="@Model.ImageUrl"/>
+</form>
