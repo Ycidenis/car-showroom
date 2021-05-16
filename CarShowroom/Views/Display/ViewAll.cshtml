@@ -5,11 +5,14 @@
     ViewData["Title"] = "Список автомобілів";
 }
 
+<div style="border: 2px;">
+    <button onclick="window.location.href = '/edit';">Додати новий автомобіль</button>
+</div>
 @foreach (var car in Model)
 {
     <div style="border: 1px;">
         <img src="@car.ImageUrl" alt="" />
         <p>Виробник: @car.Manufacturer | Модель: @car.Model | Тип двигуна: @car.EngineType | Потужність двигуна: @car.EnginePower | Кількість циліндрів: @car.AmountOfCylinders | Дата виробництва: @car.DateOfCreation | @(car.AmountLeft > 0 ? "Є в наявності" : "Немає в наявності")</p>
-        <button>Редагувати</button>
+        <button onclick="window.location.href = '/edit/@car.Id';">Редагувати</button>
     </div>
 }
