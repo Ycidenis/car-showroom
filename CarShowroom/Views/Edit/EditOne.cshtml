@@ -10,13 +10,23 @@
     {
         <input type="hidden" name="Id" value="@Model.Id" />
     }
-    <input type="text" name="Manufacturer" value="@Model.Manufacturer"/>
-    <input type="text" name="Model" value="@Model.Model"/>
-    <input type="text" name="EngineType" value="@Model.EngineType"/>
-    <input type="text" name="EnginePower" value="@Model.EnginePower"/>
-    <input type="number" name="AmountOfCylinders" value="@Model.AmountOfCylinders"/>
-    <input type="text" name="Color" value="@Model.Color"/>
-    <input type="date" name="DateOfCreation" value="@Model.DateOfCreation"/>
-    <input type="text" name="AmountLeft" value="@Model.AmountLeft">
-    <input type="text" name="ImageUrl" value="@Model.ImageUrl"/>
+    <p>Виробник</p>
+    <input type="text" name="Manufacturer" id="manufacturer" value="@Model.Manufacturer"/>
+    <p>Модель</p>
+    <input type="text" name="Model" id="model" value="@Model.Model"/>
+    <p>Тип двигуна</p>
+    <input type="text" name="EngineType" id="engine_type" value="@Model.EngineType"/>
+    <p>Потужність двигуна</p>
+    <input type="text" name="EnginePower" id="engine_power" value="@Model.EnginePower"/>
+    <p>Кількість циліндрів</p>
+    <input type="number" name="AmountOfCylinders" id="amount_of_cylinders" value="@Model.AmountOfCylinders"/>
+    <p>Колір</p>
+    <input type="text" name="Color" id="color" value="@Model.Color"/>
+    <p>Дата виготовлення</p>
+    <input type="date" name="DateOfCreation" id="date_of_creation" value="@Model.DateOfCreation.ToString("yyyy-MM-dd")"/>
+    <p>Кількість в наявності</p>
+    <input type="text" name="AmountLeft" id="amount_left" value="@Model.AmountLeft">
+    <p>Посилання на фото (jpg, png)</p>
+    <input type="text" name="ImageUrl" id="image_url" value="@Model.ImageUrl"/>
+    <input type="submit" value="Add car"/>
 </form>

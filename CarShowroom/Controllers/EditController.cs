@@ -30,22 +30,18 @@ namespace CarShowroom.Controllers
         [HttpGet("{id:guid}")]
         public async Task<ActionResult> EditOne(Guid id)
         {
-            var car = await _context.Cars.AsNoTracking().FirstOrDefaultAsync(c => c.Id == id.ToString());
-            if (car == null)
+            var car = await _context.Cars.AsNoTracking().FirstOrDefaultAsync(c => c.Id == id.ToString()) ?? new Car
             {
-                car = new Car
-                {
-                    Color = "",
-                    Manufacturer = "",
-                    Model = "",
-                    AmountLeft = 0,
-                    EnginePower = "",
-                    EngineType = "",
-                    ImageUrl = "",
-                    AmountOfCylinders = 0,
-                    DateOfCreation = DateTime.Now
-                };
-            }
+                Color = "",
+                Manufacturer = "",
+                Model = "",
+                AmountLeft = 0,
+                EnginePower = "",
+                EngineType = "",
+                ImageUrl = "",
+                AmountOfCylinders = 0,
+                DateOfCreation = DateTime.Now
+            };
 
             return View(car);
         }
