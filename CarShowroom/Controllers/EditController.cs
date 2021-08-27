@@ -20,7 +20,16 @@ namespace CarShowroom.Controllers
         [HttpPost]
         public async Task<ActionResult> Edit([FromForm] Car car)
         {
-            _context.Update(car);
+            if (car.Id == null)
+            {
+                car = car with { Id = Guid.NewGuid().ToString() };
+                _context.Add(car);
+            }
+            else
+            {
+                _context.Update(car);
+            }
+            
             await _context.SaveChangesAsync();
 
             return RedirectToAction("ViewAll", "Display");
