@@ -1,7 +1,6 @@
-using System.Linq;
+using System.Threading.Tasks;
 using CarShowroom.Services;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -9,19 +8,16 @@ namespace CarShowroom
 {
     public static class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var host = CreateHostBuilder(args).Build();
             using (var scope = host.Services.CreateScope())
             {
                 var provider = scope.ServiceProvider;
                 var context = provider.GetRequiredService<CarShowroomContext>();
-                if (context.Database.GetPendingMigrations().Any())
-                {
-                    context.Database.Migrate();
-                }
+                await context.MigrateAsync();
             }
-            host.Run();
+            await host.RunAsync();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

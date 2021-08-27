@@ -1,4 +1,6 @@
-﻿using CarShowroom.Models;
+﻿using System.Linq;
+using System.Threading.Tasks;
+using CarShowroom.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace CarShowroom.Services
@@ -10,5 +12,14 @@ namespace CarShowroom.Services
         }
         
         public DbSet<Car> Cars { get; set; }
+
+        public async Task MigrateAsync()
+        {
+            var pendingMigrations = await Database.GetPendingMigrationsAsync();
+            if (pendingMigrations.Any())
+            {
+                await Database.MigrateAsync();
+            }
+        }
     }
 }
