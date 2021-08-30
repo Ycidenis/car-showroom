@@ -1,0 +1,26 @@
+﻿@model EmployeeProject.Models.Worker
+
+@{
+    ViewData["Title"] = "Редагування працівника";
+    Layout = "_Layout";
+}
+
+<form enctype="application/x-www-form-urlencoded" method="post" action="/edit">
+    @if (Model.Id > 0)
+    {
+        <input type="hidden" name="Id" value="@Model.Id" />
+    }
+    
+    <p>Прізвище</p>
+    <input type="text" name="PublishCode" value="@Model.LastName"/>
+    <p>Ініціали</p>
+    <input type="text" name="AuthorCode" value="@Model.Initials"/>
+    <p>Посада</p>
+    <input type="text" name="Name" value="@Model.Position"/>
+    <p>Рік вступу на роботу</p>
+    <input type="number" name="PublishYear" value="@Model.YearOfWorkBeginning"/>
+    <p>Зарплатня</p>
+    <input type="number" name="ShortDescription" value="@Model.Salary"/>
+    
+    <input type="submit" value="@(Model.Id > 0 ? "Зберегти зміни" : "Створити працівника")"/>
+</form>
