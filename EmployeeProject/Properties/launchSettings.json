@@ -1,10 +1,10 @@
 ﻿{
   "profiles": {
-    "CarShowroom": {
+    "EmployeeProject": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": false,
-      "applicationUrl": "http://localhost:4900",
+      "applicationUrl": "http://localhost:4901",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
