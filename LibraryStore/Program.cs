@@ -1,10 +1,10 @@
 using System.Threading.Tasks;
-using CarShowroom.Services;
+using LibraryStore.Services;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace CarShowroom
+namespace LibraryStore
 {
     public static class Program
     {
@@ -14,7 +14,7 @@ namespace CarShowroom
             using (var scope = host.Services.CreateScope())
             {
                 var provider = scope.ServiceProvider;
-                var context = provider.GetRequiredService<CarShowroomContext>();
+                var context = provider.GetRequiredService<LibraryStoreContext>();
                 await context.MigrateAsync();
             }
             await host.RunAsync();

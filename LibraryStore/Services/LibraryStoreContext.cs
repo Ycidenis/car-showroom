@@ -1,17 +1,17 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
-using CarShowroom.Models;
+using LibraryStore.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace CarShowroom.Services
+namespace LibraryStore.Services
 {
-    public sealed class CarShowroomContext : DbContext
+    public sealed class LibraryStoreContext : DbContext
     {
-        public CarShowroomContext(DbContextOptions options) : base(options)
+        public LibraryStoreContext(DbContextOptions options) : base(options)
         {
         }
         
-        public DbSet<Car> Cars { get; set; }
+        public DbSet<Book> Books { get; set; }
 
         public async Task MigrateAsync()
         {

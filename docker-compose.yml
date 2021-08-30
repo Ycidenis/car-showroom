@@ -7,39 +7,41 @@ x-host-config: &host_config
   environment:
     - ASPNETCORE_ENVIRONMENT=Development
     - ASPNETCORE_URLS=http://+:80
-  ports:
-    - "4900:80"
 
 services:
-  host:
+  library-store-host:
     << : *restart_policy
     << : *host_config
-    container_name: car_showroom_host
-    image: car_showroom/host:latest
+    container_name: library_store_host
+    image: library-store/host:latest
     build:
       context: .
-      dockerfile: CarShowroom/Dockerfile
+      dockerfile: LibraryStore/Dockerfile
+    depends_on:
+      - postgres
+    ports:
+      - "4900:80"
     networks:
       - host_network
 
   postgres:
     <<: *restart_policy
-    container_name: car_showroom_postgres
+    container_name: ycidenis_postgres
     image: postgres:12.4
     environment:
       - POSTGRES_USER=postgres
-      - POSTGRES_DB=car_showroom
+      - POSTGRES_DB=devdb
       - POSTGRES_PASSWORD=6VK4Vyg7yv8E
     command: [ "-c", "shared_buffers=512MB", "-c", "max_connections=500" ]
     volumes:
-      - host_volume:/var/lib/postgresql/data
+      - postgres_volume:/var/lib/postgresql/data
     networks:
       - host_network
 
 volumes:
-  host_volume:
-    name: car_showroom_postgres_volume
+  postgres_volume:
+    name: ycidenis_postgres_volume
 
 networks:
   host_network:
-    name: car_showroom_network
+    name: ycidenis_network

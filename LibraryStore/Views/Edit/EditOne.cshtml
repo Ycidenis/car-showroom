@@ -1,0 +1,30 @@
+﻿@model LibraryStore.Models.Book
+
+@{
+    ViewData["Title"] = "Редагування книги";
+    Layout = "_Layout";
+}
+
+<form enctype="application/x-www-form-urlencoded" method="post" action="/edit">
+    @if (Model.Id > 0)
+    {
+        <input type="hidden" name="Id" value="@Model.Id" />
+    }
+    
+    <p>Код видання</p>
+    <input type="text" name="PublishCode" value="@Model.PublishCode"/>
+    <p>Код автора</p>
+    <input type="text" name="AuthorCode" value="@Model.AuthorCode"/>
+    <p>Назва</p>
+    <input type="text" name="Name" value="@Model.Name"/>
+    <p>Рік видання</p>
+    <input type="number" name="PublishYear" value="@Model.PublishYear"/>
+    <p>Короткий опис</p>
+    <input type="text" name="ShortDescription" value="@Model.ShortDescription"/>
+    <p>Код в сховищі</p>
+    <input type="text" name="StorageCode" value="@Model.StorageCode"/>
+    <p>Посилання на фото (jpeg, png, gif, ...)</p>
+    <input type="text" name="ImageUrl" value="@Model.ImageUrl"/>
+    
+    <input type="submit" value="@(Model.Id > 0 ? "Update book" : "Add book")"/>
+</form>

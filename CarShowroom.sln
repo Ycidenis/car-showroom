@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarShowroom", "CarShowroom\CarShowroom.csproj", "{BD102EF7-8BB1-4177-86E3-52830C00301A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryStore", "LibraryStore\LibraryStore.csproj", "{BD102EF7-8BB1-4177-86E3-52830C00301A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

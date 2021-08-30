@@ -1,16 +1,16 @@
 ﻿using System.Threading.Tasks;
-using CarShowroom.Services;
+using LibraryStore.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace CarShowroom.Controllers
+namespace LibraryStore.Controllers
 {
     [Route("")]
     public sealed class DisplayController : Controller
     {
-        private readonly CarShowroomContext _context;
+        private readonly LibraryStoreContext _context;
 
-        public DisplayController(CarShowroomContext context)
+        public DisplayController(LibraryStoreContext context)
         {
             _context = context;
         }
@@ -18,8 +18,8 @@ namespace CarShowroom.Controllers
         [HttpGet]
         public async Task<ActionResult> ViewAll()
         {
-            var allCars = await _context.Cars.AsNoTracking().ToListAsync();
-            return View(allCars);
+            var allBooks = await _context.Books.AsNoTracking().ToListAsync();
+            return View(allBooks);
         }
     }
 }

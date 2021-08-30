@@ -1,4 +1,4 @@
-using CarShowroom.Services;
+using LibraryStore.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -6,11 +6,13 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace CarShowroom
+namespace LibraryStore
 {
     public sealed class Startup
     {
         private readonly IConfiguration _configuration;
+
+        private const string DefaultConnStr = "Host=localhost;Port=5432;";
 
         public Startup(IConfiguration configuration)
         {
@@ -21,8 +23,8 @@ namespace CarShowroom
         {
             services.AddControllersWithViews();
 
-            services.AddDbContext<CarShowroomContext>(opts => opts
-                .UseNpgsql(_configuration.GetConnectionString(nameof(CarShowroomContext))));
+            services.AddDbContext<LibraryStoreContext>(opts => opts
+                .UseNpgsql(_configuration.GetConnectionString(nameof(LibraryStoreContext)) ?? DefaultConnStr));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
