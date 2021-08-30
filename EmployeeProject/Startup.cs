@@ -21,10 +21,11 @@ namespace EmployeeProject
 		
 		public void ConfigureServices(IServiceCollection services)
 		{
-			services.AddControllers();
+			services.AddControllersWithViews();
 
 			services.AddDbContext<EmployeeContext>(opts => opts
-				.UseNpgsql(_configuration.GetConnectionString(nameof(EmployeeContext)) ?? DefaultConnStr));
+				.UseNpgsql(_configuration.GetConnectionString(nameof(EmployeeContext)) ?? DefaultConnStr, builder =>
+					builder.MigrationsHistoryTable("__Migrations2")));
 		}
 
 		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

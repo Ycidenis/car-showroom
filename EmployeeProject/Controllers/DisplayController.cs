@@ -19,6 +19,7 @@ namespace EmployeeProject.Controllers
 			_context = context;
 		}
 		
+		[HttpGet]
 		[HttpGet("{yearsOfExperience:int}")]
 		public async Task<ActionResult> GetAll([FromQuery] int? yearsOfExperience, CancellationToken cancellationToken)
 		{

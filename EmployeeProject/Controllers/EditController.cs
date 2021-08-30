@@ -17,6 +17,7 @@ namespace EmployeeProject.Controllers
 			_context = context;
 		}
 
+		[HttpGet]
 		[HttpGet("{workerId:required:int}")]
 		public async Task<ActionResult> EditOne(int workerId)
 		{
