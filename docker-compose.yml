@@ -23,6 +23,21 @@ services:
       - "4900:80"
     networks:
       - host_network
+  
+  employee-project-host:
+    << : *restart_policy
+    << : *host_config
+    container_name: employee_project_host
+    image: employee-project/host:latest
+    build:
+      context: .
+      dockerfile: EmployeeProject/Dockerfile
+    depends_on:
+      - postgres
+    ports:
+      - "4901:80"
+    networks:
+      - host_network
 
   postgres:
     <<: *restart_policy
