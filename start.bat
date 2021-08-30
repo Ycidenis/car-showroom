@@ -1,4 +1,4 @@
 @ECHO off
 
-docker-compose -p car-showroom up -d --build
+docker-compose -p ycidenis up -d --build
 pause

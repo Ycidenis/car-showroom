@@ -1,4 +1,4 @@
 @ECHO off
 
-docker-compose -p car-showroom down
+docker-compose -p ycidenis down
 pause
